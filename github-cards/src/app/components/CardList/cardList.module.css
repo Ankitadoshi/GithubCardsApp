@@ -2,3 +2,76 @@
     display: grid;
     grid-template-columns: auto auto auto;
 }
+
+.searchForm {
+    width: 50%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 25rem;
+}
+
+.userSelect {
+    margin-top: 1rem;
+    width: 20rem;
+    height: 2rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    padding: 0.25rem;
+    font-style: italic;
+    font-size: medium;
+    background-color: rgb(232 236 238);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.searchButton {
+    background-color: rgb(28, 134, 227);
+    color: white;
+    border: none;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 5px;
+    padding: 0.25rem;
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.searchButton:hover {
+    transform: scale(1.04);
+}
+
+.searchInput {
+    height: 2rem;
+    width: 20rem;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 1px solid grey;
+    padding: 0.25rem;
+    font-style: italic;
+    font-size: medium;
+    background-color: rgb(232 236 238);
+}
+
+.cardContainer {
+    width: 35rem;
+}
+
+.resetButton {
+    composes: searchButton;
+    margin-left: 0.25rem;
+    background-color: transparent;
+    border: 1px solid rgb(28, 134, 227);
+    color: rgb(28, 134, 227);
+}

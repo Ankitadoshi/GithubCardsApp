@@ -44,6 +44,7 @@ function handleClearButtonClick (evt: any) {
 }
 
 function handleInputChange (evt: any) {
+    console.log(evt.target.value);
     let filteredUser = users.filter((user) => {
         return user.login.includes(evt.target.value);
     });
@@ -53,17 +54,26 @@ function handleInputChange (evt: any) {
 //     // getData();
 // }, []);
 
+
+const debounce =  (fn: Function, ms = 0) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), ms);
+    };
+};
+
 return (
     <>
     <form className={styles.searchForm}>
         <div className={styles.row}>
-            <input type="text" placeholder="search" ref={inputRef} className={styles.searchInput} onInput={handleInputChange}></input>
+            <input type="text" placeholder="search" ref={inputRef} className={styles.searchInput} onInput={debounce(handleInputChange, 500)}></input>
         </div>
        <div className={styles.row}>
         <select ref={selectRef} className={styles.userSelect} onChange={handleSelectChange}>
             <option value="">No selection</option>
             {users.map((user: any) => {
-                return <option value={user.login} key={user.id} selected={user.login === selected}>{user.login}</option>
+                return <option value={user.login} key={user.id} defaultValue={user.login === selected ? user.login : ''}>{user.login}</option>
             })}
         </select>
         </div>
